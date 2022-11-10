@@ -338,13 +338,13 @@ Resources:
           curl -u '${OpenSearchMasterUserName}:${RetrieveOpenSearchPassword.OpenSearchMasterPassword}' -X PATCH https://${OpenSearchServiceDomain.DomainEndpoint}/_plugins/_security/api/rolesmapping/all_access -H "Content-Type: application/json" -d '[{"op": "add", "path": "/backend_roles", "value": ["${KDARole.Arn}"]}]'
           
           # Create Amazon OpenSearch indices
-          curl -s https://raw.githubusercontent.com/srakshit/flink-clickstream-consumer/main/aos/index_mapping/departments_count.json| curl -u '${OpenSearchMasterUserName}:${RetrieveOpenSearchPassword.OpenSearchMasterPassword}' -s -w "\n" -XPUT https://${OpenSearchServiceDomain.DomainEndpoint}/departments_count -H "Content-Type: application/json" -d @-
-          curl -s https://raw.githubusercontent.com/srakshit/flink-clickstream-consumer/main/aos/index_mapping/user_session_counts.json| curl -u '${OpenSearchMasterUserName}:${RetrieveOpenSearchPassword.OpenSearchMasterPassword}' -s -w "\n" -XPUT https://${OpenSearchServiceDomain.DomainEndpoint}/user_session_counts -H "Content-Type: application/json" -d @-
-          curl -s https://raw.githubusercontent.com/srakshit/flink-clickstream-consumer/main/aos/index_mapping/user_session_details.json| curl -u '${OpenSearchMasterUserName}:${RetrieveOpenSearchPassword.OpenSearchMasterPassword}' -s -w "\n" -XPUT https://${OpenSearchServiceDomain.DomainEndpoint}/user_session_details -H "Content-Type: application/json" -d @-
+          curl -s https://raw.githubusercontent.com/aws-samples/msk-serverless-data-pipeline/main/amazon-opensearch/index_mapping/departments_count.json| curl -u '${OpenSearchMasterUserName}:${RetrieveOpenSearchPassword.OpenSearchMasterPassword}' -s -w "\n" -XPUT https://${OpenSearchServiceDomain.DomainEndpoint}/departments_count -H "Content-Type: application/json" -d @-
+          curl -s https://raw.githubusercontent.com/aws-samples/msk-serverless-data-pipeline/main/amazon-opensearch/index_mapping/user_session_counts.json| curl -u '${OpenSearchMasterUserName}:${RetrieveOpenSearchPassword.OpenSearchMasterPassword}' -s -w "\n" -XPUT https://${OpenSearchServiceDomain.DomainEndpoint}/user_session_counts -H "Content-Type: application/json" -d @-
+          curl -s https://raw.githubusercontent.com/aws-samples/msk-serverless-data-pipeline/main/amazon-opensearch/index_mapping/user_session_details.json| curl -u '${OpenSearchMasterUserName}:${RetrieveOpenSearchPassword.OpenSearchMasterPassword}' -s -w "\n" -XPUT https://${OpenSearchServiceDomain.DomainEndpoint}/user_session_details -H "Content-Type: application/json" -d @-
 
           # Create OpenSearch Dashboard objects
           cd /home/ec2-user
-          curl -s https://raw.githubusercontent.com/srakshit/flink-clickstream-consumer/main/aos/dashboard/clickstream_dashboard.ndjson -o clickstream_dashboard.ndjson
+          curl -s https://raw.githubusercontent.com/aws-samples/msk-serverless-data-pipeline/main/amazon-opensearch/dashboard/clickstream_dashboard.ndjson -o clickstream_dashboard.ndjson
           curl -XPOST https://${OpenSearchServiceDomain.DomainEndpoint}/_dashboards/auth/login -H "osd-xsrf: true" -H "content-type:application/json" -d '{"username":"${OpenSearchMasterUserName}", "password" : "${RetrieveOpenSearchPassword.OpenSearchMasterPassword}"} ' -c auth.txt
           curl -XPOST https://${OpenSearchServiceDomain.DomainEndpoint}/_dashboards/api/saved_objects/_import -H "osd-xsrf:true" -b auth.txt --form file=@clickstream_dashboard.ndjson
 
