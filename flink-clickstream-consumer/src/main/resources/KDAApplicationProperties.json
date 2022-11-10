@@ -1,0 +1,15 @@
+[
+  {
+    "PropertyGroupId": "FlinkApplicationProperties",
+    "PropertyMap": {
+      "OpenSearchEndpoint": "https://vpc-aos-clickstream-us-east-1-xxxxxxxxxxxxx.us-east-1.es.amazonaws.com",
+      "Region": "us-east-1",
+      "BootstrapServers": "boot-xxxxxxx.xx.kafka-serverless.us-east-1.amazonaws.com:9098",
+      "GroupId": "flink-clickstream-processor",
+      "Topic": "ExampleTopic",
+      "DepartmentsAgg_Topic": "Departments_Agg",
+      "clickEventsUserIdAggResult_Topic": "ClickEvents_UserId_Agg_Result",
+      "userSessionsAggregatesWithOrderCheckout_Topic": "User_Sessions_Aggregates_With_Order_Checkout"
+    }
+  }
+]

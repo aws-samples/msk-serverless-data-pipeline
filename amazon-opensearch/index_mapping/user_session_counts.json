@@ -1,0 +1,22 @@
+{
+    "mappings":{
+      "properties":{
+        "userSessionCount":{
+          "type":"integer"
+        },
+        "userSessionCountWithOrderCheckout":{
+          "type":"integer"
+        },
+        "percentSessionswithBuy":{
+          "type":"double"
+        },
+        "windowBeginTime":{
+          "type":"date"
+        },
+        "windowEndTime":{
+          "type":"date"
+        }
+      }
+    }
+  }
+  
